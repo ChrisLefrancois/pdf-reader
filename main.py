@@ -14,9 +14,6 @@ def find_pdf():
 
     if file:
         file_name = os.path.basename(file)
-        file_label = Label(window, text=f"PDF {file_name}", font=("Arial", 10, "bold"))
-        file_label.place(x=170, y=100)
-        file_label.config(fg="white", bg="black",highlightthickness=0)
 
         pdf = open(file, 'rb')
         pdf_reader = PyPDF2.PdfReader(pdf)
@@ -34,8 +31,12 @@ window = tkinter.Tk()
 window.geometry("600x400")
 window.config(bg="black")
 
-search_button = Button(window, text="Search Pdf to Read", command=find_pdf, bg="grey", font=("arial", 24))
-search_button.grid(row=2, column=1, padx=100, pady=200)
+search_button = Button(window, text="Search PDF to Read", command=find_pdf, bg="grey", font=("arial", 24))
+search_button.place(x=200, y=200)
+
+file_label = Label(window, text="Read a PDF File", font=("Arial", 40, "bold"))
+file_label.place(x=170, y=100)
+file_label.config(fg="white", bg="black", highlightthickness=0)
 
 
 window.mainloop()
